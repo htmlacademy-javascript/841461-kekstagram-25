@@ -3,179 +3,152 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="vendor/nouislider/nouislider.css">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
   <title>Кекстаграм</title>
 </head>
 
-<body>
+<body class="lng">
   <main>
-
-    <!-- Фильтрация изображений от других пользователей -->
-    <section class="img-filters  img-filters--inactive  container">
-      <h2 class="img-filters__title  visually-hidden">Фильтр фотографий</h2>
+    <!-- Filters for images if other users -->
+    <section class="img-filters filter-container">
+      <h2 class="img-filters__title visually-hidden img-filters--inactive lng--headline-filters">Photo filter</h2>
       <form class="img-filters__form" action="index.html" method="get" autocomplete="off">
-        <button type=button class="img-filters__button  img-filters__button--active" id="filter-default">По умолчанию</button>
-        <button type=button class="img-filters__button" id="filter-random">Случайные</button>
-        <button type=button class="img-filters__button" id="filter-discussed">Обсуждаемые</button>
+        <button type=button class="img-filters__button lng--default-filter img-filters__button--active" id="filter-default">Default</button>
+        <button type=button class="img-filters__button lng--random-filter" id="filter-random">Random</button>
+        <button type=button class="img-filters__button lng--discussed-filter" id="filter-discussed">Discussed</button>
       </form>
     </section>
+    <!-- Language picker -->
+    <section class = "lang-picker">
+      <div class="lang-picker__block lang-menu">
+        <select class="lang-menu__list languages">
+          <option value="en" class="languages__item">English</option>
+          <option value="nl" class="languages__item">Nederlands</option>
+          <option value="fr" class="languages__item">Française</option>
+          <option value="de" class="languages__item">Deutsch</option>
+          <option value="ua" class="languages__item">Українська</option>
+          <option value="ru" class="languages__item">Русский</option>
+        </select>
+      </div>
+    </section>
+    <!-- Container for images of other users -->
+    <section class="pictures container">
+      <h2 class="pictures__title lng--headline-pictures visually-hidden">Photos of another users</h2>
 
-    <!-- Контейнер для изображений от других пользователей -->
-    <section class="pictures  container">
-      <h2 class="pictures__title  visually-hidden">Фотографии других пользователей</h2>
-
-      <!-- Поле для загрузки нового изображения на сайт -->
+      <!-- Area for image uploading -->
       <section class="img-upload">
         <div class="img-upload__wrapper">
-          <h2 class="img-upload__title  visually-hidden">Загрузка фотографии</h2>
-          <form class="img-upload__form" id="upload-select-image" method="post" enctype="multipart/form-data" autocomplete="off">
+          <h2 class="img-upload__title lng--headline-upload-start visually-hidden">Photo upload</h2>
+          <form class="img-upload__form" id="upload-select-image" method="post" action="https://27.javascript.pages.academy/kekstagram-simple" enctype="multipart/form-data" autocomplete="off">
 
-            <!-- Изначальное состояние поля для загрузки изображения -->
+            <!-- Initial condition of area for image uploading -->
             <fieldset class="img-upload__start">
-              <input type="file" id="upload-file" class="img-upload__input  visually-hidden" name="filename" required>
-              <label for="upload-file" class="img-upload__label  img-upload__control">Загрузить</label>
+              <input type="file" accept="image" id="upload-file" class="img-upload__input  visually-hidden" name="filename" required>
+              <label for="upload-file" class="img-upload__label img-upload__control"><span class="vissually-hidden lng--upload-start">Upload</span></label>
             </fieldset>
 
-            <!-- Форма редактирования изображения -->
+            <!-- Image editing form -->
             <div class="img-upload__overlay  hidden">
               <div class="img-upload__wrapper">
                 <div class="img-upload__preview-container">
 
-                  <!-- Изменение размера изображения -->
+                  <!-- Change of image size -->
                   <fieldset class="img-upload__scale  scale">
-                    <button type="button" class="scale__control  scale__control--smaller">Уменьшить</button>
-                    <input type="text" class="scale__control  scale__control--value" value="55%" title="Image Scale" name="scale" readonly>
-                    <button type="button" class="scale__control  scale__control--bigger">Увеличить</button>
+                    <button type="button" class="scale__control lng--less-button  scale__control--smaller">Decrease</button>
+                    <input type="text" class="scale__control scale__control--value" value="100%" title="Image Scale" name="scale"  readonly>
+                    <button type="button" class="scale__control lng--more-button scale__control--bigger">Increase</button>
                   </fieldset>
 
-                  <!-- Предварительный просмотр изображения -->
-                  <div class="img-upload__preview">
-                    <img src="img/upload-default-image.jpg" alt="Предварительный просмотр фотографии">
+                  <!-- Image preview -->
+                  <div class="img-upload__preview placeholder-container">
+                    <img src="img/upload-default-image.jpg" accept="image/png, image/jpeg" alt="Предварительный просмотр фотографии">
                   </div>
 
-                  <!-- Изменение глубины эффекта, накладываемого на изображение -->
-                  <fieldset class="img-upload__effect-level  effect-level">
-                    <input class="effect-level__value" type="number" step="any" name="effect-level" value="">
+                  <!-- Effect intensity change -->
+                  <fieldset class="img-upload__effect-level effect-level">
+                    <input class="effect-level__value" type="range" step="any" name="effect-level" value="">
                     <div class="effect-level__slider"></div>
                   </fieldset>
 
-                  <!-- Кнопка для закрытия формы редактирования изображения -->
-                  <button type="reset" class="img-upload__cancel  cancel" id="upload-cancel">Закрыть</button>
+                  <!-- Reset Button for image editing form -->
+                  <button type="reset" class="img-upload__cancel cancel" id="upload-cancel"><span class="visually-hidden lng--cancel-button">reset</span></button>
                 </div>
 
-                <!-- Наложение эффекта на изображение -->
-                <fieldset class="img-upload__effects  effects">
+                <!-- Шьфпу effect overlay -->
+                <fieldset class="img-upload__effects effects">
                   <ul class="effects__list">
                     <li class="effects__item">
-                      <input type="radio" class="effects__radio  visually-hidden" name="effect" id="effect-none" value="none" checked>
+                      <input type="radio" class="effects__radio visually-hidden" name="effect" id="effect-none" value="none" checked>
                       <label for="effect-none" class="effects__label">
-                        <span class="effects__preview  effects__preview--none">Превью фото без эффекта</span>
-                        Оригинал
+                        <span class="effects__preview effects__preview--none lng--previewed-original">Превью фото без эффекта</span>
+                        <span class="lng--original">Оригинал</span>
                       </label>
                     </li>
                     <li class="effects__item">
-                      <input type="radio" class="effects__radio  visually-hidden" name="effect" id="effect-chrome" value="chrome">
+                      <input type="radio" class="effects__radio visually-hidden" name="effect" id="effect-chrome" value="chrome">
                       <label for="effect-chrome" class="effects__label">
-                        <span class="effects__preview  effects__preview--chrome">Превью эффекта Хром</span>
-                        Хром
+                        <span class="effects__preview effects__preview--chrome lng--previewed-gray">Превью эффекта Хром</span>
+                        <span class="lng--gray">Хром</span>
                       </label>
                     </li>
                     <li class="effects__item">
-                      <input type="radio" class="effects__radio  visually-hidden" name="effect" id="effect-sepia" value="sepia">
+                      <input type="radio" class="effects__radio visually-hidden" name="effect" id="effect-sepia" value="sepia">
                       <label for="effect-sepia" class="effects__label">
-                        <span class="effects__preview  effects__preview--sepia">Превью эффекта Сепия</span>
-                        Сепия
+                        <span class="effects__preview effects__preview--sepia lng--previewed-yellow">Превью эффекта Сепия</span>
+                        <span class="lng--yellow">Сепия</span>
                       </label>
                     </li>
                     <li class="effects__item">
-                      <input type="radio" class="effects__radio  visually-hidden" name="effect" id="effect-marvin" value="marvin">
+                      <input type="radio" class="effects__radio visually-hidden" name="effect" id="effect-marvin" value="marvin">
                       <label for="effect-marvin" class="effects__label">
-                        <span class="effects__preview  effects__preview--marvin">Превью эффекта Марвин</span>
-                        Марвин
+                        <span class="effects__preview effects__preview--marvin lng--previewed-negative">Превью эффекта Марвин</span>
+                        <span class="lng--negative">Марвин</span>
                       </label>
                     </li>
                     <li class="effects__item">
-                      <input type="radio" class="effects__radio  visually-hidden" name="effect" id="effect-phobos" value="phobos">
+                      <input type="radio" class="effects__radio visually-hidden" name="effect" id="effect-phobos" value="phobos">
                       <label for="effect-phobos" class="effects__label">
-                        <span class="effects__preview  effects__preview--phobos">Превью эффекта Фобос</span>
-                        Фобос
+                        <span class="effects__preview effects__preview--phobos lng--previewed-blur">Превью эффекта Фобос</span>
+                        <span class="lng--blur">Фобос</span>
                       </label>
                     </li>
                     <li class="effects__item">
-                      <input type="radio" class="effects__radio  visually-hidden" name="effect" id="effect-heat" value="heat">
+                      <input type="radio" class="effects__radio visually-hidden" name="effect" id="effect-heat" value="heat">
                       <label for="effect-heat" class="effects__label">
-                        <span class="effects__preview  effects__preview--heat">Превью эффекта Зной</span>
-                        Зной
+                        <span class="effects__preview effects__preview--heat lng--previewed-saturation">Превью эффекта Зной</span>
+                        <span class="lng--saturation">Зной</span>
+                      </label>
+                    </li>
+                    <li class="effects__item">
+                      <input type="radio" class="effects__radio visually-hidden" name="effect" id="effect-space" value="space">
+                      <label for="effect-space" class="effects__label">
+                        <span class="effects__preview effects__preview--space lng-previewed-exchange">Превью эффекта Cпэйс</span>
+                        <span class="lng--exchange">Cпэйс</span>
                       </label>
                     </li>
                   </ul>
                 </fieldset>
 
-                <!-- Добавление хэш-тегов и комментария к изображению -->
+                <!-- Adding comment for image -->
                 <fieldset class="img-upload__text text">
-                  <input class="text__hashtags" name="hashtags" placeholder="#ХэшТег">
-                  <textarea class="text__description" name="description" placeholder="Ваш комментарий..."></textarea>
+                    <label class="text__label">
+                      <textarea class="field text__description" name="description" placeholder="Your comment..." data-pristine-minlength="20" data-pristine-maxlength="140" data-pristine-required-message="Required field" data-pristine-minlength-message="Minimum length is 20 characters" data-pristine-maxlength-message="Maximum length is 140 characters" required></textarea>
+                    </label>
                 </fieldset>
 
-                <!-- Кнопка для отправки данных на сервер -->
-                <button type="submit" class="img-upload__submit" id="upload-submit">Опубликовать</button>
+                <!-- Submit Button -->
+                <button type="submit" class="img-upload__submit lng--submit" id="upload-submit">Publish</button>
               </div>
             </div>
           </form>
         </div>
       </section>
 
-      <!-- Здесь будут изображения других пользователей -->
+      <!-- Here is the place for images of other users -->
 
-    </section>
-
-    <!-- Полноэкранный показ изображения -->
-    <section class="big-picture  overlay  hidden">
-      <h2 class="big-picture__title  visually-hidden">Просмотр фотографии</h2>
-      <div class="big-picture__preview">
-
-        <!-- Просмотр изображения -->
-        <div class="big-picture__img">
-          <img src="img/logo-background-3.jpg" alt="Девушка в купальнике" width="600" height="600">
-        </div>
-
-        <!-- Информация об изображении. Подпись, комментарии, количество лайков -->
-        <div class="big-picture__social  social">
-          <div class="social__header">
-            <img class="social__picture" src="img/avatar-1.svg" alt="Аватар автора фотографии" width="35" height="35">
-            <p class="social__caption">Тестим новую камеру! =)</p>
-            <p class="social__likes">Нравится <span class="likes-count">356</span></p>
-          </div>
-
-          <!-- Комментарии к изображению -->
-          <div class="social__comment-count">5 из <span class="comments-count">125</span> комментариев</div>
-          <ul class="social__comments">
-            <li class="social__comment">
-              <img class="social__picture" src="img/avatar-4.svg" alt="Аватар комментатора фотографии" width="35" height="35">
-              <p class="social__text">Мега фото! Просто обалдеть. Как вам так удалось?</p>
-            </li>
-            <li class="social__comment">
-              <img class="social__picture" src="img/avatar-3.svg" alt="Аватар комментатора фотографии" width="35" height="35">
-               <p class="social__text">Да это фоташоп!!!!!!!!</p>
-            </li>
-          </ul>
-
-          <!-- Кнопка для загрузки новой порции комментариев -->
-          <button type="button" class="social__comments-loader  comments-loader">Загрузить еще</button>
-
-          <!-- Форма для отправки комментария -->
-          <div class="social__footer">
-            <img class="social__picture" src="img/avatar-6.svg" alt="Аватар комментатора фотографии" width="35" height="35">
-            <input type="text" class="social__footer-text" placeholder="Ваш комментарий...">
-            <button type="button" class="social__footer-btn" name="button">Отправить</button>
-          </div>
-        </div>
-
-        <!-- Кнопка для выхода из полноэкранного просмотра изображения -->
-        <button type="reset" class="big-picture__cancel  cancel" id="picture-cancel">Закрыть</button>
-      </div>
     </section>
   </main>
 
@@ -183,21 +156,18 @@
     <div class="page-footer__wrapper">
       <div class="page-footer__copyright  copyright">
         <a class="copyright__link  copyright__link--image" href="https://htmlacademy.ru/intensive/javascript"><img src="img/htmla-logo.svg" width="130" height="45" alt="HTML Academy"></a>
-        <p>Сделано в <a class="copyright__link  copyright__link--text" href="https://htmlacademy.ru/intensive/javascript">HTML Academy</a></p>
+        <p><span class="lng--author">Made in</span>&nbsp;<a class="copyright__link  copyright__link--text" href="https://htmlacademy.ru/intensive/javascript">HTML Academy</a></p>
       </div>
       <ul class="page-footer__contacts  contacts">
         <li><a href="https://twitter.com/htmlacademy_ru" class="contacts__link  contacts__link--twitter">Twitter</a></li>
-        <li><a href="https://www.instagram.com/htmlacademy/" class="contacts__link  contacts__link--instagram">Instagtam</a></li>
-        <li><a href="https://www.facebook.com/htmlacademy" class="contacts__link  contacts__link--facebook">Facebook</a></li>
-        <li><a href="https://vk.com/htmlacademy" class="contacts__link  contacts__link--vk">VK</a></li>
       </ul>
     </div>
   </footer>
 
-  <!-- Шаблон изображения случайного пользователя -->
+  <!-- Template for image of random users -->
   <template id="picture">
     <a href="#" class="picture">
-      <img class="picture__img" src="" width="182" height="182" alt="Случайная фотография">
+      <img class="picture__img lng--alt-of-random-image" src="" width="182" height="182" alt="Случайная фотография">
       <p class="picture__info">
         <span class="picture__comments"></span>
         <span class="picture__likes"></span>
@@ -205,31 +175,27 @@
     </a>
   </template>
 
-  <!-- Сообщение с ошибкой загрузки изображения -->
+  <!-- Template of error message after image upload -->
   <template id="error">
     <section class="error">
       <div class="error__inner">
-        <h2 class="error__title">Ошибка загрузки файла</h2>
-        <button type="button" class="error__button">Загрузить другой файл</button>
+        <h2 class="error__title lng--error-message">File upload error</h2>
+        <button type="button" class="error__button lng--error-button">To try one more time</button>
       </div>
     </section>
   </template>
 
-  <!-- Сообщение об успешной загрузке изображения -->
+  <!-- Template of succes message after image upload -->
   <template id="success">
     <section class="success">
       <div class="success__inner">
-        <h2 class="success__title">Изображение успешно загружено</h2>
-        <button type="button" class="success__button">Круто!</button>
+        <h2 class="success__title lng--success-message">Image successfully uploaded</h2>
+        <button type="button" class="success__button lng--success-button">Cool!</button>
       </div>
     </section>
   </template>
-
-  <!-- Экран загрузки изображения -->
-  <template id="messages">
-    <div class="img-upload__message  img-upload__message--loading">Загружаем...</div>
-  </template>
-<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
-<script src="js/main.js"></script>
+<script src="vendor/pristine/pristine.min.js"></script>
+<script src="vendor/nouislider/nouislider.js"></script>
+<script src="js/main.js" type="module"></script>
 </body>
 </html>

@@ -1,51 +1,31 @@
-# Личный проект «Кекстаграм»
+# Personal Project «Kekstagram (simple version)»
 
-* Студент: [Даша Гермаш](https://up.htmlacademy.ru/javascript/25/user/841461).
-* Наставник: [Александр Палян] (https://htmlacademy.ru/profile/id1231107).
+* Student: [Daria Germash](https://up.htmlacademy.ru/javascript/27/user/841461).
+* Menthor: [Oleksandr Palyan](https://htmlacademy.ru/profile/id1231107).
 
----
-
-_Не удаляйте и не изменяйте самовольно файлы и папки:_
+_Please don't delete and don't change files and folders:_
 _`.editorconfig`, `.eslintrc`, `.gitattributes`, `.gitignore`, `package-lock.json`, `package.json`., `.github`_
 
----
+[Work with Git at the Project](Contributing.md) | [Wark at Project](Workflow.md)
 
-[Как работать с Git на проекте](Contributing.md) | [Как работать над проектом](Workflow.md)
+### Reminder
 
-### Памятка
+#### 1. Please register at Github
 
-#### 1. Зарегистрируйтесь на Гитхабе
+#### 2. Create fork
 
-Если у вас ещё нет аккаунта на [github.com](https://github.com/join), скорее зарегистрируйтесь.
+Please open repository and push the button «Fork». The repository of Academy will have been copied in to your account.
 
-#### 2. Создайте форк
+#### 3. Please clone your repository to your PC
 
-Откройте репозиторий и нажмите кнопку «Fork» в правом верхнем углу. Репозиторий из Академии будет скопирован в ваш аккаунт.
+Please, be carefull: you need to clone your repository (fork), not Academy' one. Also please pay attention, that you need to clone repository through SSH. Copy your repository SSH-path:
 
-<img width="769" alt="" src="https://user-images.githubusercontent.com/10909/35275222-1d624452-0050-11e8-8aca-06d2832724ce.png">
+git clone SSH-path
 
-Получится вот так:
-
-<img width="769" alt="" src="https://user-images.githubusercontent.com/10909/35275223-1d7cf9fa-0050-11e8-829b-98ac3c9a4f8b.png">
-
-#### 3. Клонируйте репозиторий на свой компьютер
-
-Будьте внимательны: нужно клонировать свой репозиторий (форк), а не репозиторий Академии. Также обратите внимание, что клонировать репозиторий нужно через SSH, а не через HTTPS. Нажмите зелёную кнопку в правой части экрана, чтобы скопировать SSH-адрес вашего репозитория:
-
-<img width="769" alt="" src="https://user-images.githubusercontent.com/10909/35275224-1d97a7dc-0050-11e8-89f9-41c9a7b2ae9c.png">
-
-Клонировать репозиторий можно так:
-
-```
-git clone SSH-адрес_вашего_форка
-```
-
-Команда клонирует репозиторий на ваш компьютер и подготовит всё необходимое для старта работы.
-
-#### 4. Начинайте обучение!
+#### 4. Let's get started!
 
 ---
 
 <a href="https://htmlacademy.ru/intensive/javascript"><img align="left" width="50" height="50" alt="HTML Academy" src="https://up.htmlacademy.ru/static/img/intensive/javascript/logo-for-github-2.png"></a>
 
-Репозиторий создан для обучения на интенсивном онлайн‑курсе «[JavaScript. Профессиональная разработка веб-интерфейсов](https://htmlacademy.ru/intensive/javascript)» от [HTML Academy](https://htmlacademy.ru).
+Repository had been created for studying at intensive online‑course «[JavaScript. Professional development of web-interfaces](https://htmlacademy.ru/intensive/javascript)» от [HTML Academy](https://htmlacademy.ru).
