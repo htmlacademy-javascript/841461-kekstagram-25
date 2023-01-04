@@ -1,7 +1,7 @@
-# Личный проект «Кекстаграм»
+# Личный проект «Кекстаграм (простой)»
 
-* Студент: [Даша Гермаш](https://up.htmlacademy.ru/javascript/25/user/841461).
-* Наставник: [Александр Палян] (https://htmlacademy.ru/profile/id1231107).
+* Студент: [Даша Гермаш](https://up.htmlacademy.ru/javascript/27/user/841461).
+* Наставник: [Александр Палян](https://htmlacademy.ru/profile/id1231107).
 
 ---
 
